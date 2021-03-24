@@ -1,12 +1,12 @@
 # clean-code-typescript [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Clean%20Code%20Typescript&url=https://github.com/labs42io/clean-code-typescript)
 
-Clean Code concepts adapted for TypeScript.  
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript).
+แนวคิด Clean Code สำหรับปรับใช้กับ TypeScript.  
+ได้แรงบันดาลใจจาก [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript).
 
-## Table of Contents
+## สารบัญ
 
-  1. [Introduction](#introduction)
-  2. [Variables](#variables)
+  1. [บทนำ](#introduction)
+  2. [ตัวแปร](#variables)
   3. [Functions](#functions)
   4. [Objects and Data Structures](#objects-and-data-structures)
   5. [Classes](#classes)
@@ -18,43 +18,28 @@ Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-cod
   11. [Comments](#comments)
   12. [Translations](#translations)
 
-## Introduction
+## บทนำ
 
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for TypeScript. This is not a style guide. It's a guide to producing
-[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) software in TypeScript.
+หลักการทางวิศวกรรมซอฟต์แวร์จากหนังสือ [*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) ของ Robert C.Martin, ปรับใช้สำหรับ  TypeScript นี่ไม่ใช่คู่มือแนะนำแนวทางการเขียนโค้ด แต่เป็นแนวทางในการสร้างสรรค์ซอฟต์แวร์ให้[สามารถอ่านโค้ดเข้าใจได้ง่าย สามารถนำโค้ดมาใช้ซ้ำได้ และสามารถปรับปรุงโค้ดได้](https://github.com/ryanmcdermott/3rs-of-software-architecture) ในรูปแบบของภาษา TypeScript
 
-Not every principle herein has to be strictly followed, and even fewer will be
-universally agreed upon. These are guidelines and nothing more, but they are
-ones codified over many years of collective experience by the authors of
-*Clean Code*.
+แต่ไม่ใช่ว่าจะต้องทำตามหลักการในนี้ทั้งหมดทุกข้อนะ และหลักการที่ยอมรับกันทั่วไปก็มีไม่กี่ข้อเท่านั้น นี่จึงเป็นเพียงแค่แนวทางเท่านั้นไม่มีอะไรมากกว่านี้แล้ว แต่ทั้งหมดนี้เป็นโค้ดที่ตกผลึกมาจากประสบการณ์หลายปีของผู้เขียนหนังสือ *Clean Code* นั่นเอง
 
-Our craft of software engineering is just a bit over 50 years old, and we are
-still learning a lot. When software architecture is as old as architecture
-itself, maybe then we will have harder rules to follow. For now, let these
-guidelines serve as a touchstone by which to assess the quality of the
-TypeScript code that you and your team produce.
+งานด้านวิศวกรรมซอฟต์แวร์ของเราพึ่งจะมีขึ้นมาแค่ 50 กว่าปีเท่านั้น และเรายังคงต้องเรียนรู้กันอีกมาก เมื่อสถาปัตยกรรมซอฟต์แวร์เก่าพอ ๆ กับสถาปัตยกรรมเอง บางทีกฎของเราบางข้ออาจจะยากเกินไปที่จะทำตามนะ เอาหล่ะตอนนี้เรามาใช้แนวทางเหล่านี้เป็นหลักในการประเมินคุณภาพของโค้ด TypeScript ที่คุณและทีมของคุณสร้างขึ้นมากันดีกว่า
 
-One more thing: knowing these won't immediately make you a better software
-developer, and working with them for many years doesn't mean you won't make
-mistakes. Every piece of code starts as a first draft, like wet clay getting
-shaped into its final form. Finally, we chisel away the imperfections when
-we review it with our peers. Don't beat yourself up for first drafts that need
-improvement. Beat up the code instead!
+อีกอย่างนึง: การรู้สิ่งเหล่านี้ไม่ได้ทำให้คุณเป็นนักพัฒนาที่เก่งขึ้นมาทันทีหรอกนะ และต่อให้ใช้มันไปอีกหลายปีก็ไม่ได้หมายความว่าคุณจะไม่่ข้อผิดพลาดเลยนะ โค้ดทุกส่วนในนี้ก็เริ่มมาจากการร่างในตอนแรกเหมือนการปั้นดินน้ำมันที่ให้เป็นรูปทรงขึ้นมาก่อน จนสุดท้ายเราก็ค่อย ๆ แกะสลักส่วนที่ยังไม่สมบูรณ์ออกตอนที่เราช่วยกันตรวจสอบในทีม อย่าโทษตัวเองเมื่อคุณต้องแก้โค้ดของคุณตั้งแต่ตอนแรก แต่จงทำให้โค้ดมันดีขึ้นเรื่อย ๆ แทนจะดีกว่า!
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-## Variables
+## ตัวแปร
 
-### Use meaningful variable names
+### ตั้งชื่อตัวแปรให้มีความหมาย
 
-Distinguish names in such a way that the reader knows what the differences offer.
+แต่ละชื่อควรตั้งให้คนที่อ่านรู้ได้ทันทีว่ามีอะไรอยู่บ้าง
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function between<T>(a1: T, a2: T, a3: T): boolean {
@@ -63,7 +48,7 @@ function between<T>(a1: T, a2: T, a3: T): boolean {
 
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function between<T>(value: T, left: T, right: T): boolean {
@@ -71,13 +56,13 @@ function between<T>(value: T, left: T, right: T): boolean {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use pronounceable variable names
+### ใช้ชื่อตัวแปรที่อ่านออกเสียงได้
 
-If you can’t pronounce it, you can’t discuss it without sounding like an idiot.
+ถ้าคุณไม่สามารถอ่านชื่อตัวแปรเป็นคำพูดได้ ก็เหมือนคุณเป็นคนบ้าที่พูดไม่รู้เรื่อง
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 type DtaRcrd102 = {
@@ -87,7 +72,7 @@ type DtaRcrd102 = {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type Customer = {
@@ -97,11 +82,11 @@ type Customer = {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### ใช้ชื่อเป็นคำศัพท์เดียวกันสำหรับตัวแปรที่เป็นประเภทเดียวกัน
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function getUserInfo(): User;
@@ -109,26 +94,26 @@ function getUserDetails(): User;
 function getUserData(): User;
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function getUser(): User;
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use searchable names
+### ตั้งชื่อให้สามารถพิมพ์ค้นหาได้
 
-We will read more code than we will ever write. It's important that the code we do write must be readable and searchable. By *not* naming variables that end up being meaningful for understanding our program, we hurt our readers. Make your names searchable. Tools like [TSLint](https://palantir.github.io/tslint/rules/no-magic-numbers/) can help identify unnamed constants.
+เราใช้เวลาอ่านโค้ดมากกว่าเขียนโค้ด ดังนั้นสิ่งสำคัญคือโค้ดที่เราเขียนจะต้องอ่านได้และค้นหาได้ โดยการที่เรา *ไม่* ตั้งชื่อตัวแปรให้ท้ายที่สุดแล้วมีความหมายสำหรับการทำความเข้าใจโปรแกรมของเรา จะทำให้คนที่มาอ่านโค้ดลำบากมาก วิธีการทำให้ชื่อค่าคงที่ของคุณสามารถค้นหาได้ เครื่องมือเช่น [TSLint](https://palantir.github.io/tslint/rules/no-magic-numbers/) สามารถช่วยหาค่าคงที่ที่ไม่มีชื่อได้
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 // What the heck is 86400000 for?
 setTimeout(restart, 86400000);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 // Declare them as capitalized named constants.
