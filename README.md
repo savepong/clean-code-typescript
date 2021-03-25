@@ -7,7 +7,7 @@
 
 1. [บทนำ](#introduction)
 2. [ตัวแปร](#variables)
-3. [Functions](#functions)
+3. [ฟังก์ชั่น](#functions)
 4. [Objects and Data Structures](#objects-and-data-structures)
 5. [Classes](#classes)
 6. [SOLID](#solid)
@@ -123,9 +123,9 @@ setTimeout(restart, MILLISECONDS_IN_A_DAY);
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use explanatory variables
+### ใช้ชื่อตัวแปรอธิบายการทำงานของโค้ด
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 declare const users: Map<string, User>;
@@ -135,7 +135,7 @@ for (const keyValue of users) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 declare const users: Map<string, User>;
@@ -147,12 +147,12 @@ for (const [id, user] of users) {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Avoid Mental Mapping
+### หลีกเลี่ยงการใช้ตัวแปรเป็นชื่อย่อ
 
-Explicit is better than implicit.  
-_Clarity is king._
+ชัดเจนดีกว่าโดยปริยาย.  
+_ความชัดเจนคือราชา._
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const u = getUser();
@@ -160,7 +160,7 @@ const s = getSubscription();
 const t = charge(u, s);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const user = getUser();
@@ -170,11 +170,11 @@ const transaction = charge(user, subscription);
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Don't add unneeded context
+### อย่าเพิ่มบริบทโดยไม่จำเป็น
 
-If your class/type/object name tells you something, don't repeat that in your variable name.
+ถ้าชื่อ class/type/object บอกอะไรคุณบางอย่างได้อยู่แล้ว อย่าไปตั้งซ้ำในชื่อตัวแปรอีกที
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 type Car = {
@@ -188,7 +188,7 @@ function print(car: Car): void {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type Car = {
@@ -204,11 +204,11 @@ function print(car: Car): void {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### กำหนดค่าอาร์กิวเมนต์เริ่มต้นแทนการใช้ short circuiting หรือเขียนเงื่อนไข
 
-Default arguments are often cleaner than short circuiting.
+กำหนดค่าอาร์กิวเมนต์เริ่มต้นไปเลยจะดูสะอาดกว่าการใช้ short circuiting.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function loadPages(count?: number) {
@@ -217,7 +217,7 @@ function loadPages(count?: number) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function loadPages(count: number = 10) {
@@ -227,12 +227,11 @@ function loadPages(count: number = 10) {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Use enum to document the intent
+### ใช้ enum เพื่อจำกัดค่าต้องการ
 
-Enums can help you document the intent of the code. For example when we are concerned about values being
-different rather than the exact value of those.
+Enums สามารถช่วยคุณจำกัดค่าต้องการได้ เช่น เวลาที่เรากังกลว่าค่าอาจจะไม่ตรงกับค่าที่ควรจะเป็นจริง ๆ
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const GENRE = {
@@ -255,7 +254,7 @@ class Projector {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 enum GENRE {
@@ -280,31 +279,27 @@ class Projector {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-## Functions
+## ฟังก์ชั่น
 
-### Function arguments (2 or fewer ideally)
+### อาร์กิวเมนต์ของฟังก์ชั่น (ถ้าให้ดีควรมีแค่ 2 หรือน้อยกว่า)
 
-Limiting the number of function parameters is incredibly important because it makes testing your function easier.
-Having more than three leads to a combinatorial explosion where you have to test tons of different cases with each separate argument.
+การจำกัดจำนวนของพารามิเตอร์เป็นสิ่งที่สำคัญอย่างยิ่ง เพราะว่ามันจะทำให้การทดสอบฟังก์ชั่นของคุณทำได้ง่ายมาก การที่มีมากกว่า 3 ตัวขึ้นไป จะทำให้เราต้องเขียนเทสเคสที่แตกต่างกันของแต่ละอาร์กิวเมนต์ ซึ่งมันจะเยอะมาก ๆ เลยหล่ะ
 
-One or two arguments is the ideal case, and three should be avoided if possible. Anything more than that should be consolidated.
-Usually, if you have more than two arguments then your function is trying to do too much.
-In cases where it's not, most of the time a higher-level object will suffice as an argument.
+1 หรือ 2 อาร์กิวเมนต์จึงเป็นสิ่งที่ดีที่สุด และถ้าเป็นไปได้ไม่ควรถึง 3 อาร์กิวเมนต์ ถ้าจำเป็นต้องมีมากกว่านั้นจริง ๆ ก็ควรหาทางรวมกันให้ได้ โดยปกติ ถ้าคุณมีมากกว่า 2 อาร์กิวเมนต์แปลว่าฟังก์ชั่นที่คุณพยามทำมันใหญ่เกินไปแล้ว แต่ในกรณีที่ไม่ใช่แบบนั้น การใช้ higher-level object เป็นอาร์กิวเมนต์ก็จะเป็นทางเลือกที่ดีกว่า
 
-Consider using object literals if you are finding yourself needing a lot of arguments.
+ถ้าคุณพบว่าคุณเองต้องการใช้อาร์กิวเมนต์จำนวนมาก ให้ตัดสินใจใช้ object literals
 
-To make it obvious what properties the function expects, you can use the [destructuring](https://basarat.gitbook.io/typescript/future-javascript/destructuring) syntax.
-This has a few advantages:
+เพื่อให้ชัดเจนว่าฟังก์ชั่นของคุณต้องการ property อะไรบ้าง คุณควรใช้ [destructuring](https://basarat.gitbook.io/typescript/future-javascript/destructuring) มีข้อดีดังนี้:
 
-1. When someone looks at the function signature, it's immediately clear what properties are being used.
+1. เมื่อมีคนดูการทำงานของฟังก์ชั่น จะรู้ได้ทันทีเลยว่า property อะไรบ้างที่กำลังถูกใช้
 
-2. It can be used to simulate named parameters.
+2. สามารถใช้เพื่อจำลองเป็นชื่อพารามิเตอร์ได้
 
-3. Destructuring also clones the specified primitive values of the argument object passed into the function. This can help prevent side effects. Note: objects and arrays that are destructured from the argument object are NOT cloned.
+3. การ Destructuring จะส่งค่าเริ่มต้นของอาร์กิวเมนต์ไปในฟังก์ชั่นด้วย ทำให้ช่วยป้องกันไม่ให้เกิดปัญหา side effect ได้ ข้อควรจำ: ถ้าเป็น object และ array ที่ถูก destructure ไว้อยู่แล้วในอาร์กิวเมนต์ จะไม่ถูกส่งเข้าฟังก์ชั่นนั้นด้วย
 
-4. TypeScript warns you about unused properties, which would be impossible without destructuring.
+4. TypeScript จะมีการเตือนหากมี property ไหนที่ไม่ได้ใช้ได้ด้วย ซึ่งจะเป็นไม่ได้หากเราไม่มีการใช้ destructuring
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function createMenu(
@@ -319,7 +314,7 @@ function createMenu(
 createMenu("Foo", "Bar", "Baz", true);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function createMenu(options: {
@@ -367,7 +362,7 @@ createMenu({
 
 This is by far the most important rule in software engineering. When functions do more than one thing, they are harder to compose, test, and reason about. When you can isolate a function to just one action, it can be refactored easily and your code will read much cleaner. If you take nothing else away from this guide other than this, you'll be ahead of many developers.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function emailClients(clients: Client[]) {
@@ -380,7 +375,7 @@ function emailClients(clients: Client[]) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function emailClients(clients: Client[]) {
@@ -397,7 +392,7 @@ function isActiveClient(client: Client) {
 
 ### Function names should say what they do
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function addToDate(date: Date, month: number): Date {
@@ -410,7 +405,7 @@ const date = new Date();
 addToDate(date, 1);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function addMonthToDate(date: Date, month: number): Date {
@@ -427,7 +422,7 @@ addMonthToDate(date, 1);
 
 When you have more than one level of abstraction your function is usually doing too much. Splitting up functions leads to reusability and easier testing.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function parseCode(code: string) {
@@ -454,7 +449,7 @@ function parseCode(code: string) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const REGEXES = [
@@ -508,7 +503,7 @@ Oftentimes you have duplicate code because you have two or more slightly differe
 
 Getting the abstraction right is critical, that's why you should follow the [SOLID](#solid) principles. Bad abstractions can be worse than duplicate code, so be careful! Having said this, if you can make a good abstraction, do it! Don't repeat yourself, otherwise, you'll find yourself updating multiple places anytime you want to change one thing.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function showDeveloperList(developers: Developer[]) {
@@ -544,7 +539,7 @@ function showManagerList(managers: Manager[]) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class Developer {
@@ -588,7 +583,7 @@ You should be critical about code duplication. Sometimes there is a tradeoff bet
 
 ### Set default objects with Object.assign or destructuring
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 type MenuConfig = {
@@ -611,7 +606,7 @@ function createMenu(config: MenuConfig) {
 createMenu({ body: "Bar" });
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type MenuConfig = {
@@ -670,7 +665,7 @@ See [`--strictNullChecks`](https://www.typescriptlang.org/docs/handbook/release-
 Flags tell your user that this function does more than one thing.
 Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function createFile(name: string, temp: boolean) {
@@ -682,7 +677,7 @@ function createFile(name: string, temp: boolean) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function createTempFile(name: string) {
@@ -707,7 +702,7 @@ Have one service that does it. One and only one.
 
 The main point is to avoid common pitfalls like sharing state between objects without any structure, using mutable data types that can be written to by anything, and not centralizing where your side effects occur. If you can do this, you will be happier than the vast majority of other programmers.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 // Global variable referenced by following function.
@@ -723,7 +718,7 @@ toBase64();
 console.log(name); // expected to print 'Robert C. Martin' but instead 'Um9iZXJ0IEMuIE1hcnRpbg=='
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const name = "Robert C. Martin";
@@ -752,7 +747,7 @@ Two caveats to mention to this approach:
 
 2. Cloning big objects can be very expensive in terms of performance. Luckily, this isn't a big issue in practice because there are great libraries that allow this kind of programming approach to be fast and not as memory intensive as it would be for you to manually clone objects and arrays.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function addItemToCart(cart: CartItem[], item: Item): void {
@@ -760,7 +755,7 @@ function addItemToCart(cart: CartItem[], item: Item): void {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function addItemToCart(cart: CartItem[], item: Item): CartItem[] {
@@ -774,7 +769,7 @@ function addItemToCart(cart: CartItem[], item: Item): CartItem[] {
 
 Polluting globals is a bad practice in JavaScript because you could clash with another library and the user of your API would be none-the-wiser until they get an exception in production. Let's think about an example: what if you wanted to extend JavaScript's native Array method to have a `diff` method that could show the difference between two arrays? You could write your new function to the `Array.prototype`, but it could clash with another library that tried to do the same thing. What if that other library was just using `diff` to find the difference between the first and last elements of an array? This is why it would be much better to just use classes and simply extend the `Array` global.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 declare global {
@@ -791,7 +786,7 @@ if (!Array.prototype.diff) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class MyArray<T> extends Array<T> {
@@ -808,7 +803,7 @@ class MyArray<T> extends Array<T> {
 
 Favor this style of programming when you can.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const contributions = [
@@ -837,7 +832,7 @@ for (let i = 0; i < contributions.length; i++) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const contributions = [
@@ -869,7 +864,7 @@ const totalOutput = contributions.reduce(
 
 ### Encapsulate conditionals
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 if (subscription.isTrial || account.balance > 0) {
@@ -877,7 +872,7 @@ if (subscription.isTrial || account.balance > 0) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function canActivateService(subscription: Subscription, account: Account) {
@@ -893,7 +888,7 @@ if (canActivateService(subscription, account)) {
 
 ### Avoid negative conditionals
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function isEmailNotUsed(email: string): boolean {
@@ -905,7 +900,7 @@ if (isEmailNotUsed(email)) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function isEmailUsed(email: string): boolean {
@@ -923,7 +918,7 @@ if (!isEmailUsed(node)) {
 
 This seems like an impossible task. Upon first hearing this, most people say, "how am I supposed to do anything without an `if` statement?" The answer is that you can use polymorphism to achieve the same task in many cases. The second question is usually, "well that's great but why would I want to do that?" The answer is a previous clean code concept we learned: a function should only do one thing. When you have classes and functions that have `if` statements, you are telling your user that your function does more than one thing. Remember, just do one thing.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class Airplane {
@@ -949,7 +944,7 @@ class Airplane {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 abstract class Airplane {
@@ -990,7 +985,7 @@ TypeScript is a strict syntactical superset of JavaScript and adds optional stat
 Always prefer to specify types of variables, parameters and return values to leverage the full power of TypeScript features.
 It makes refactoring more easier.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function travelToTexas(vehicle: Bicycle | Car) {
@@ -1002,7 +997,7 @@ function travelToTexas(vehicle: Bicycle | Car) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type Vehicle = Bicycle | Car;
@@ -1018,7 +1013,7 @@ function travelToTexas(vehicle: Vehicle) {
 
 Modern browsers do a lot of optimization under-the-hood at runtime. A lot of times, if you are optimizing then you are just wasting your time. There are good [resources](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers) for seeing where optimization is lacking. Target those in the meantime, until they are fixed if they can be.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 // On old browsers, each iteration with uncached `list.length` would be costly
@@ -1028,7 +1023,7 @@ for (let i = 0, len = list.length; i < len; i++) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 for (let i = 0; i < list.length; i++) {
@@ -1043,7 +1038,7 @@ for (let i = 0; i < list.length; i++) {
 Dead code is just as bad as duplicate code. There's no reason to keep it in your codebase.
 If it's not being called, get rid of it! It will still be safe in your version history if you still need it.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function oldRequestModule(url: string) {
@@ -1058,7 +1053,7 @@ const req = requestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function requestModule(url: string) {
@@ -1082,7 +1077,7 @@ There are some good reasons:
 - built-in support for iterating items using the `for-of` syntax
 - iterables allow implementing optimized iterator patterns
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function fibonacci(n: number): number[] {
@@ -1105,7 +1100,7 @@ function print(n: number) {
 print(10);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 // Generates an infinite stream of Fibonacci numbers.
@@ -1168,7 +1163,7 @@ Using getters and setters to access data from objects that encapsulate behavior 
 - Easy to add logging and error handling when getting and setting.
 - You can lazy load your object's properties, let's say getting it from a server.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 type BankAccount = {
@@ -1189,7 +1184,7 @@ if (value < 0) {
 account.balance = value;
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class BankAccount {
@@ -1224,7 +1219,7 @@ account.balance = 100;
 
 TypeScript supports `public` _(default)_, `protected` and `private` accessors on class members.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class Circle {
@@ -1244,7 +1239,7 @@ class Circle {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class Circle {
@@ -1267,7 +1262,7 @@ class Circle {
 TypeScript's type system allows you to mark individual properties on an interface/class as _readonly_. This allows you to work in a functional way (an unexpected mutation is bad).  
 For more advanced scenarios there is a built-in type `Readonly` that takes a type `T` and marks all of its properties as readonly using mapped types (see [mapped types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types)).
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 interface Config {
@@ -1277,7 +1272,7 @@ interface Config {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 interface Config {
@@ -1290,7 +1285,7 @@ interface Config {
 Case of Array, you can create a read-only array by using `ReadonlyArray<T>`.
 do not allow changes such as `push()` and `fill()`, but can use features such as `concat()` and `slice()` that do not change the value.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const array: number[] = [1, 3, 5];
@@ -1298,7 +1293,7 @@ array = []; // error
 array.push(100); // array will updated
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const array: ReadonlyArray<number> = [1, 3, 5];
@@ -1316,7 +1311,7 @@ function hoge(args: readonly string[]) {
 
 Prefer [const assertions](https://github.com/microsoft/TypeScript/wiki/What's-new-in-TypeScript#const-assertions) for literal values.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const config = {
@@ -1336,7 +1331,7 @@ const result = readonlyData(100);
 result.value = 200; // value is changed
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 // read-only object
@@ -1365,7 +1360,7 @@ result.value = 200; // error
 Use type when you might need a union or intersection. Use an interface when you want `extends` or `implements`. There is no strict rule, however, use the one that works for you.  
 For a more detailed explanation refer to this [answer](https://stackoverflow.com/questions/37233735/typescript-interfaces-vs-types/54101543#54101543) about the differences between `type` and `interface` in TypeScript.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 interface EmailConfig {
@@ -1387,7 +1382,7 @@ type Shape = {
 };
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type EmailConfig = {
@@ -1423,7 +1418,7 @@ class Square implements Shape {
 
 The class' size is measured by its responsibility. Following the _Single Responsibility principle_ a class should be small.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class Dashboard {
@@ -1473,7 +1468,7 @@ class Dashboard {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class Dashboard {
@@ -1503,7 +1498,7 @@ Coupling refers to how related or dependent are two classes toward each other. C
 
 Good software design has **high cohesion** and **low coupling**.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class UserManager {
@@ -1538,7 +1533,7 @@ class UserManager {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class UserService {
@@ -1584,7 +1579,7 @@ You might be wondering then, "when should I use inheritance?" It depends on your
 
 3. You want to make global changes to derived classes by changing a base class. (Change the caloric expenditure of all animals when they move).
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class Employee {
@@ -1608,7 +1603,7 @@ class EmployeeTaxData extends Employee {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class Employee {
@@ -1637,7 +1632,7 @@ class EmployeeTaxData {
 
 This pattern is very useful and commonly used in many libraries. It allows your code to be expressive, and less verbose. For that reason, use method chaining and take a look at how clean your code will be.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class QueryBuilder {
@@ -1674,7 +1669,7 @@ queryBuilder.orderBy("firstName", "lastName");
 const query = queryBuilder.build();
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class QueryBuilder {
@@ -1721,7 +1716,7 @@ const query = new QueryBuilder()
 
 As stated in Clean Code, "There should never be more than one reason for a class to change". It's tempting to jam-pack a class with a lot of functionality, like when you can only take one suitcase on your flight. The issue with this is that your class won't be conceptually cohesive and it will give it many reasons to change. Minimizing the amount of time you need to change a class is important. It's important because if too much functionality is in one class and you modify a piece of it, it can be difficult to understand how that will affect other dependent modules in your codebase.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class UserSettings {
@@ -1739,7 +1734,7 @@ class UserSettings {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class UserAuth {
@@ -1771,7 +1766,7 @@ class UserSettings {
 
 As stated by Bertrand Meyer, "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." What does that mean though? This principle basically states that you should allow users to add new functionalities without changing existing code.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class AjaxAdapter extends Adapter {
@@ -1813,7 +1808,7 @@ function makeHttpCall<T>(url: string): Promise<T> {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 abstract class Adapter {
@@ -1864,7 +1859,7 @@ This is a scary term for a very simple concept. It's formally defined as "If S i
 
 The best explanation for this is if you have a parent class and a child class, then the parent class and child class can be used interchangeably without getting incorrect results. This might still be confusing, so let's take a look at the classic Square-Rectangle example. Mathematically, a square is a rectangle, but if you model it using the "is-a" relationship via inheritance, you quickly get into trouble.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class Rectangle {
@@ -1918,7 +1913,7 @@ const rectangles = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeRectangles(rectangles);
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 abstract class Shape {
@@ -1971,7 +1966,7 @@ renderLargeShapes(shapes);
 ISP states that "Clients should not be forced to depend upon interfaces that they do not use.". This principle is very much related to the Single Responsibility Principle.
 What it really means is that you should always design your abstractions in a way that the clients that are using the exposed methods do not get the whole pie instead. That also include imposing the clients with the burden of implementing methods that they don’t actually need.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 interface SmartPrinter {
@@ -2009,7 +2004,7 @@ class EconomicPrinter implements SmartPrinter {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 interface Printer {
@@ -2059,7 +2054,7 @@ This can be hard to understand at first, but if you've worked with Angular, you'
 
 DIP is usually achieved by a using an inversion of control (IoC) container. An example of a powerful IoC container for TypeScript is [InversifyJs](https://www.npmjs.com/package/inversify)
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { readFile as readFileCb } from 'fs';
@@ -2094,7 +2089,7 @@ const reader = new ReportReader();
 await report = await reader.read('report.xml');
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { readFile as readFileCb } from 'fs';
@@ -2182,7 +2177,7 @@ Clean tests should follow the rules:
 
 Tests should also follow the _Single Responsibility Principle_. Make only one assert per unit test.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { assert } from "chai";
@@ -2203,7 +2198,7 @@ describe("AwesomeDate", () => {
 });
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { assert } from "chai";
@@ -2232,7 +2227,7 @@ describe("AwesomeDate", () => {
 
 When a test fails, its name is the first indication of what may have gone wrong.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 describe("Calendar", () => {
@@ -2246,7 +2241,7 @@ describe("Calendar", () => {
 });
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 describe("Calendar", () => {
@@ -2270,7 +2265,7 @@ Callbacks aren't clean, and they cause excessive amounts of nesting _(the callba
 There are utilities that transform existing functions using the callback style to a version that returns promises
 (for Node.js see [`util.promisify`](https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original), for general purpose see [pify](https://www.npmjs.com/package/pify), [es6-promisify](https://www.npmjs.com/package/es6-promisify))
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { get } from "request";
@@ -2309,7 +2304,7 @@ downloadPage(
 );
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { get } from "request";
@@ -2347,7 +2342,7 @@ Promises supports a few helper methods that help make code more concise:
 
 With `async`/`await` syntax you can write code that is far cleaner and more understandable than chained promises. Within a function prefixed with `async` keyword, you have a way to tell the JavaScript runtime to pause the execution of code on the `await` keyword (when used on a promise).
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { get } from "request";
@@ -2368,7 +2363,7 @@ downloadPage(
   .catch((error) => console.error(error));
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { get } from "request";
@@ -2410,7 +2405,7 @@ It would be very confusing to catch a string message there and would make
 [debugging more painful](https://basarat.gitbook.io/typescript/type-system/exceptions#always-use-error).  
 For the same reason you should reject promises with `Error` types.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function calculateTotal(items: Item[]): number {
@@ -2422,7 +2417,7 @@ function get(): Promise<Item[]> {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function calculateTotal(items: Item[]): number {
@@ -2468,7 +2463,7 @@ For the detailed explanation of this idea refer to the [original post](https://m
 
 Doing nothing with a caught error doesn't give you the ability to ever fix or react to said error. Logging the error to the console (`console.log`) isn't much better as often it can get lost in a sea of things printed to the console. If you wrap any bit of code in a `try/catch` it means you think an error may occur there and therefore you should have a plan, or create a code path, for when it occurs.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 try {
@@ -2486,7 +2481,7 @@ try {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { logger } from "./logging";
@@ -2504,7 +2499,7 @@ try {
 
 For the same reason you shouldn't ignore caught errors from `try/catch`.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 getUser()
@@ -2516,7 +2511,7 @@ getUser()
   });
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { logger } from "./logging";
@@ -2567,7 +2562,7 @@ Refer also to this great [TypeScript StyleGuide and Coding Conventions](https://
 
 Capitalization tells you a lot about your variables, functions, etc. These rules are subjective, so your team can choose whatever they want. The point is, no matter what you all choose, just _be consistent_.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 const DAYS_IN_WEEK = 7;
@@ -2587,7 +2582,7 @@ type Container = {
 };
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const DAYS_IN_WEEK = 7;
@@ -2617,7 +2612,7 @@ Prefer using `camelCase` for variables, functions and class members.
 If a function calls another, keep those functions vertically close in the source file. Ideally, keep the caller right above the callee.
 We tend to read code from top-to-bottom, like a newspaper. Because of this, make your code read that way.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 class PerformanceReview {
@@ -2657,7 +2652,7 @@ const review = new PerformanceReview(employee);
 review.review();
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class PerformanceReview {
@@ -2716,7 +2711,7 @@ With clean and easy to read import statements you can quickly see the dependenci
   - modules from a parent directory (i.e. `import foo from '../foo'; import qux from '../../foo/qux';`)
   - modules from the same or a sibling's directory (i.e. `import bar from './bar'; import baz from './bar/baz';`)
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { TypeDefinition } from "../types/typeDefinition";
@@ -2728,7 +2723,7 @@ import { BindingScopeEnum, Container } from "inversify";
 import "reflect-metadata";
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import "reflect-metadata";
@@ -2751,13 +2746,13 @@ Create prettier imports by defining the paths and baseUrl properties in the comp
 
 This will avoid long relative paths when doing imports.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 import { UserService } from "../../../services/UserService";
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 import { UserService } from "@services/UserService";
@@ -2790,7 +2785,7 @@ The use of a comments is an indication of failure to express without them. Code 
 
 Comments are an apology, not a requirement. Good code _mostly_ documents itself.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 // Check if subscription is active.
@@ -2798,7 +2793,7 @@ if (subscription.endDate > Date.now) {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 const isSubscriptionActive = subscription.endDate > Date.now;
@@ -2813,7 +2808,7 @@ if (isSubscriptionActive) {
 
 Version control exists for a reason. Leave old code in your history.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 type User = {
@@ -2824,7 +2819,7 @@ type User = {
 };
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 type User = {
@@ -2839,7 +2834,7 @@ type User = {
 
 Remember, use version control! There's no need for dead code, commented code, and especially journal comments. Use `git log` to get history!
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 /**
@@ -2853,7 +2848,7 @@ function combine(a: number, b: number): number {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function combine(a: number, b: number): number {
@@ -2868,7 +2863,7 @@ function combine(a: number, b: number): number {
 They usually just add noise. Let the functions and variable names along with the proper indentation and formatting give the visual structure to your code.  
 Most IDE support code folding feature that allows you to collapse/expand blocks of code (see Visual Studio Code [folding regions](https://code.visualstudio.com/updates/v1_17#_folding-regions)).
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 ////////////////////////////////////////////////////////////////////////////////
@@ -2900,7 +2895,7 @@ class Client {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 class Client {
@@ -2933,7 +2928,7 @@ you can quickly go over the entire list of todos.
 
 Keep in mind however that a _TODO_ comment is not an excuse for bad code.
 
-**Bad:**
+**ไม่ดี:**
 
 ```ts
 function getActiveSubscriptions(): Promise<Subscription[]> {
@@ -2942,7 +2937,7 @@ function getActiveSubscriptions(): Promise<Subscription[]> {
 }
 ```
 
-**Good:**
+**ดี:**
 
 ```ts
 function getActiveSubscriptions(): Promise<Subscription[]> {
