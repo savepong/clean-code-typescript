@@ -29,7 +29,7 @@ you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
 งานด้านวิศวกรรมซอฟต์แวร์ของเราพึ่งจะมีขึ้นมาแค่ 50 กว่าปีเท่านั้น และเรายังคงต้องเรียนรู้กันอีกมาก เมื่อสถาปัตยกรรมซอฟต์แวร์เก่าพอ ๆ กับสถาปัตยกรรมเอง บางทีกฎของเราบางข้ออาจจะยากเกินไปที่จะทำตามนะ เอาหล่ะตอนนี้เรามาใช้แนวทางเหล่านี้เป็นหลักในการประเมินคุณภาพของโค้ด TypeScript ที่คุณและทีมของคุณสร้างขึ้นมากันดีกว่า
 
-อีกอย่างนึง: การรู้สิ่งเหล่านี้ไม่ได้ทำให้คุณเป็นนักพัฒนาที่เก่งขึ้นมาทันทีหรอกนะ และต่อให้ใช้มันไปอีกหลายปีก็ไม่ได้หมายความว่าคุณจะไม่่ข้อผิดพลาดเลยนะ โค้ดทุกส่วนในนี้ก็เริ่มมาจากการร่างในตอนแรกเหมือนการปั้นดินน้ำมันที่ให้เป็นรูปทรงขึ้นมาก่อน จนสุดท้ายเราก็ค่อย ๆ แกะสลักส่วนที่ยังไม่สมบูรณ์ออกตอนที่เราช่วยกันตรวจสอบในทีม อย่าโทษตัวเองเมื่อคุณต้องแก้โค้ดของคุณตั้งแต่ตอนแรก แต่จงทำให้โค้ดมันดีขึ้นเรื่อย ๆ แทนจะดีกว่า!
+อีกอย่างนึง: การรู้สิ่งเหล่านี้ไม่ได้ทำให้คุณเป็นนักพัฒนาที่เก่งขึ้นมาทันที และต่อให้ใช้มันไปอีกหลายปีก็ไม่ได้หมายความว่าคุณจะไม่มีข้อผิดพลาดเลย โค้ดทุกส่วนในนี้ก็เริ่มมาจากการร่างในตอนแรกเหมือนการปั้นดินน้ำมันที่ให้เป็นรูปทรงขึ้นมาก่อน จนสุดท้ายเราก็ค่อย ๆ แกะสลักส่วนที่ยังไม่สมบูรณ์ออกตอนที่เราช่วยกันตรวจสอบในทีม อย่าโทษตัวเองเมื่อคุณต้องแก้โค้ดของคุณตั้งแต่ตอนแรก แต่จงทำให้โค้ดมันดีขึ้นเรื่อย ๆ แทนจะดีกว่า!
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
@@ -83,7 +83,7 @@ type Customer = {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### ใช้ชื่อเป็นคำศัพท์เดียวกันสำหรับตัวแปรที่เป็นประเภทเดียวกัน
+### ใช้ชื่อเป็นคำศัพท์เดียวกันสำหรับตัวแปรที่เป็นประเภทเดียวกันไปเลย
 
 **ไม่ดี:**
 
@@ -334,7 +334,7 @@ createMenu({
 });
 ```
 
-You can further improve readability by using [type aliases](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases):
+คุณสามารถปรับปรุงให้อ่านง่ายขึ้นได้อีกโดยใช้ [type aliases](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases):
 
 ```ts
 type MenuOptions = {
@@ -358,9 +358,9 @@ createMenu({
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Functions should do one thing
+### ฟังก์ชั่นนึงควรทำแค่ 1 อย่าง
 
-This is by far the most important rule in software engineering. When functions do more than one thing, they are harder to compose, test, and reason about. When you can isolate a function to just one action, it can be refactored easily and your code will read much cleaner. If you take nothing else away from this guide other than this, you'll be ahead of many developers.
+นี่เป็นกฎที่สำคัญที่สุดในวิศวกรรมซอฟต์แวร์ เมื่อฟังก์ชั่นนึงทำหลายอย่าง จะทำให้เขียน test case ยาก แต่เมื่อคุณแยกฟังก์ชั่นเป็นฟังกชั่นเล็ก ๆ ที่ทำงานแค่ 1 อย่าง จะทำให้สามารถปรับปรุงโค้ดได้ง่ายและดูสะอาดตาขึ้นมาก ถ้าคุณไม่ได้ทำอะไรผิดแปลกไปนอกเหนือจากคู่มือนี้ คุณก็จะลำ้หน้า developers คนอื่น ๆ อีกมาก
 
 **ไม่ดี:**
 
@@ -390,7 +390,7 @@ function isActiveClient(client: Client) {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Function names should say what they do
+### ชื่อฟังก์ชั่นควรบอกได้เลยว่าทำอะไร
 
 **ไม่ดี:**
 
@@ -418,9 +418,9 @@ addMonthToDate(date, 1);
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### ฟังก์ชันควรเป็นนามธรรมระดับหนึ่งเท่านั้น
 
-When you have more than one level of abstraction your function is usually doing too much. Splitting up functions leads to reusability and easier testing.
+เมื่อคุณมีนามธรรมมากกว่าหนึ่งระดับหน้าที่ ของคุณมักจะทำมากเกินไป การแยกฟังก์ชันนำไปสู่การใช้ซ้ำและการทดสอบที่ง่ายขึ้น
 
 **ไม่ดี:**
 
