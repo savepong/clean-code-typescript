@@ -490,18 +490,16 @@ function parse(tokens: Token[]): SyntaxTree {
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Remove duplicate code
+### ลบโค้ดที่ซ้ำกัน
 
-Do your absolute best to avoid duplicate code.
-Duplicate code is bad because it means that there's more than one place to alter something if you need to change some logic.
+พยายามหลีกเลี่ยงไม่ให้มีโค้ดซ้ำกัน การมีโค้ดซ้ำกันเป็นสิ่งที่ไม่ดีเลย เพราะว่าถ้าเราต้องแก้โค้ดนั้นมันก็หมายความว่าเราต้องตามแก้ให้ครบทุกจุดที่ซ้ำกัน
 
-Imagine if you run a restaurant and you keep track of your inventory: all your tomatoes, onions, garlic, spices, etc.
-If you have multiple lists that you keep this on, then all have to be updated when you serve a dish with tomatoes in them.
-If you only have one list, there's only one place to update!
+ลองนึกภาพว่าถ้าคุณเป็นเจ้าของร้านอาหารและคุณต้องการติดตามสินค้าคงคลังของคุณ: มะเขือเทศ, หัวหอม, กระเทียม, เครื่องเทศ และอื่น ๆ ทั้งหมดของคุณ
+ถ้าคุณจดรายการเหล่านั้นไว้หลาย ๆ ที่ เมื่อคุณมีการเสิร์ฟอาหารที่มีมะเขือเทศออกไป คุณก็ต้องไปปรับจำนวนมะเขือเทศในในทุกรายการที่ที่จดไว้ แต่ถ้าคุณจดไว้ที่เดียวคุณก็แค่ปรับรายการแค่ที่เดียว!
 
-Oftentimes you have duplicate code because you have two or more slightly different things, that share a lot in common, but their differences force you to have two or more separate functions that do much of the same things. Removing duplicate code means creating an abstraction that can handle this set of different things with just one function/module/class.
+บ่อยครั้งที่คุณมีโค้ดที่ซ้ำกันได้ เพราะคุณมีโค้ดที่แตกต่างกันเล็กน้อยมากกว่าสองที่ ส่วนใหญ่จะมีส่วนมีเหมือนกันอยู่เกือบทั้งหมด แต่ส่วนที่ต่างเล็กน้อยนั่นแหละบังคับให้คุณต้องแยกฟังก์ชันออกไปมากกว่าสองที่ ทั้ง ๆ ที่มันทำงานเหมือนกัน การลบโค้ดที่ซ้ำกันคือการสร้างสิ่งที่เป็นนามธรรมที่สามารถจัดสิ่งที่แตกต่างกันทั้งหมดนี้ด้วยการใช้แค่เพียง ฟังก์ชัน/โมดูล/คลาส เดียวเท่านั้น
 
-Getting the abstraction right is critical, that's why you should follow the [SOLID](#solid) principles. Bad abstractions can be worse than duplicate code, so be careful! Having said this, if you can make a good abstraction, do it! Don't repeat yourself, otherwise, you'll find yourself updating multiple places anytime you want to change one thing.
+การทำให้สิ่งที่เป็นนามธรรมถูกต้อง เป็นสิ่งสำคัญนั่นเป็นเหตุผลที่คุณควรปฏิบัติตามหลักการ [SOLID](#solid) นามธรรมที่ไม่ดีอาจแย่กว่าโค้ดที่ซ้ำกันจงระวังไว้ด้วย! บอกไว้เลยว่า ถ้าคุณสามารถสร้างนามธรรมที่ดีได้ก็จงทำ! อย่าทำอะไรซ้ำซากจำเจ มิฉะนั้นคุณจะพบว่าตัวเองต้องคอยตามไปแก้ไขโค้ดหลายที่ ทุกครั้งเวลาที่คุณต้องการแก้ไขโค้ดแค่จุดเดียว
 
 **ไม่ดี:**
 
@@ -577,11 +575,11 @@ function showEmployeeList(employee: Developer | Manager) {
 }
 ```
 
-You should be critical about code duplication. Sometimes there is a tradeoff between duplicated code and increased complexity by introducing unnecessary abstraction. When two implementations from two different modules look similar but live in different domains, duplication might be acceptable and preferred over extracting the common code. The extracted common code, in this case, introduces an indirect dependency between the two modules.
+คุณควรต้องใช้วิจารณญาณเกี่ยวกับเรื่องโค้ดซ้ำ เพราะมีบางครั้งที่ต้องเลือกระหว่างการมีโค้ดที่ซ้ำกันกับการมีที่โค้ดมีความซับซ้อนเพิ่มขิ้นโดยไม่จำเป็น เมื่อมีโค้ดที่เขียนคล้ายกันของโมดูลสองโมดูลที่อยู่กันคนละโดเมน การมีโค้ดซ้ำแบบนั้นก็ถือว่าเป็นเรื่องที่ยอมรับได้ และน่าสนใจกว่าการมีโค้ดพื้นฐานแยกกัน โค้ดพื้นฐานที่แยกออกมาในกรณีนี้แนะนำให้ใช้การพึ่งพาทางอ้อมระหว่างสองโมดูล
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Set default objects with Object.assign or destructuring
+### ตั้งค่าเริ่มต้นให้อ็อบเจกต์ด้วย Object.assign หรือ destructuring
 
 **ไม่ดี:**
 
@@ -633,7 +631,7 @@ function createMenu(config: MenuConfig) {
 createMenu({ body: "Bar" });
 ```
 
-Alternatively, you can use destructuring with default values:
+อีกทางนึง คุณสามารถใช้ destructuring ด้วยค่าเริ่มต้นแบบนี้:
 
 ```ts
 type MenuConfig = {
@@ -655,15 +653,14 @@ function createMenu({
 createMenu({ body: "Bar" });
 ```
 
-To avoid any side effects and unexpected behavior by passing in explicitly the `undefined` or `null` value, you can tell the TypeScript compiler to not allow it.
-See [`--strictNullChecks`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#--strictnullchecks) option in TypeScript.
+เพื่อหลีกเลี่ยงการเกิด side effects และ unexpected behavior โดยการผ่านค่าให้ชัดเจนไปเลย เช่น `undefined` หรือ `null` คุณสามารถบอก TypeScript compiler ให้ปิดมัน
+โดยดูการตั้งค่า TypeScript ที่ [`--strictNullChecks`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#--strictnullchecks)
 
 **[⬆ กลับสู่ด้านบน](#table-of-contents)**
 
-### Don't use flags as function parameters
+### อย่าใช้ flags เป็นพารามิเตอร์ของฟังก์ชัน
 
-Flags tell your user that this function does more than one thing.
-Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
+Flags จะไว้บอกผู้ใช้ของคุณว่าฟังก์ชันนี้ทำมากกว่าหนึ่งอย่าง ฟังก์ชันควรทำแค่อย่างเดียว แยกฟังก์ชันของคุณออกมา ถ้าพวกเขากำลังไล่หาโค้ดผิดที่จากโค้ดใช้ boolean ที่แตกต่างกัน
 
 **ไม่ดี:**
 
