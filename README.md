@@ -31,7 +31,7 @@ you shout when reading code](https://www.osnews.com/images/comics/wtfm.jpg)
 
 อีกอย่างนึง: การรู้สิ่งเหล่านี้ไม่ได้ทำให้คุณเป็นนักพัฒนาที่เก่งขึ้นมาทันที และต่อให้ใช้มันไปอีกหลายปีก็ไม่ได้หมายความว่าคุณจะไม่มีข้อผิดพลาดเลย โค้ดทุกส่วนในนี้ก็เริ่มมาจากการร่างในตอนแรกเหมือนการปั้นดินน้ำมันที่ให้เป็นรูปทรงขึ้นมาก่อน จนสุดท้ายเราก็ค่อย ๆ แกะสลักส่วนที่ยังไม่สมบูรณ์ออกตอนที่เราช่วยกันตรวจสอบในทีม อย่าโทษตัวเองเมื่อคุณต้องแก้โค้ดของคุณตั้งแต่ตอนแรก แต่จงทำให้โค้ดมันดีขึ้นเรื่อย ๆ แทนจะดีกว่า!
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## ตัวแปร
 
@@ -55,7 +55,7 @@ function between<T>(value: T, left: T, right: T): boolean {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ใช้ชื่อตัวแปรที่อ่านออกเสียงได้
 
@@ -81,7 +81,7 @@ type Customer = {
 };
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ใช้ชื่อเป็นคำศัพท์เดียวกันสำหรับตัวแปรที่เป็นประเภทเดียวกันไปเลย
 
@@ -99,7 +99,7 @@ function getUserData(): User;
 function getUser(): User;
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ตั้งชื่อให้สามารถพิมพ์ค้นหาได้
 
@@ -121,7 +121,7 @@ const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
 setTimeout(restart, MILLISECONDS_IN_A_DAY);
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ใช้ชื่อตัวแปรอธิบายการทำงานของโค้ด
 
@@ -145,7 +145,7 @@ for (const [id, user] of users) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### หลีกเลี่ยงการใช้ตัวแปรเป็นชื่อย่อ
 
@@ -168,7 +168,7 @@ const subscription = getSubscription();
 const transaction = charge(user, subscription);
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### อย่าเพิ่มบริบทโดยไม่จำเป็น
 
@@ -202,7 +202,7 @@ function print(car: Car): void {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### กำหนดค่าอาร์กิวเมนต์เริ่มต้นแทนการใช้ short circuiting หรือเขียนเงื่อนไข
 
@@ -225,7 +225,7 @@ function loadPages(count: number = 10) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ใช้ enum เพื่อจำกัดค่าต้องการ
 
@@ -277,7 +277,7 @@ class Projector {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## ฟังก์ชัน
 
@@ -356,7 +356,7 @@ createMenu({
 });
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ฟังก์ชันนึงควรทำแค่ 1 อย่าง
 
@@ -388,7 +388,7 @@ function isActiveClient(client: Client) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ชื่อฟังก์ชันควรบอกได้เลยว่าทำอะไร
 
@@ -416,7 +416,7 @@ const date = new Date();
 addMonthToDate(date, 1);
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ฟังก์ชันควรเป็นนามธรรมระดับหนึ่งเท่านั้น
 
@@ -488,7 +488,7 @@ function parse(tokens: Token[]): SyntaxTree {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ลบโค้ดที่ซ้ำกัน
 
@@ -577,7 +577,7 @@ function showEmployeeList(employee: Developer | Manager) {
 
 คุณควรต้องใช้วิจารณญาณเกี่ยวกับเรื่องโค้ดซ้ำ เพราะมีบางครั้งที่ต้องเลือกระหว่างการมีโค้ดที่ซ้ำกันกับการมีที่โค้ดมีความซับซ้อนเพิ่มขิ้นโดยไม่จำเป็น เมื่อมีโค้ดที่เขียนคล้ายกันของโมดูลสองโมดูลที่อยู่กันคนละโดเมน การมีโค้ดซ้ำแบบนั้นก็ถือว่าเป็นเรื่องที่ยอมรับได้ และน่าสนใจกว่าการมีโค้ดพื้นฐานแยกกัน โค้ดพื้นฐานที่แยกออกมาในกรณีนี้แนะนำให้ใช้การพึ่งพาทางอ้อมระหว่างสองโมดูล
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### ตั้งค่าเริ่มต้นให้อ็อบเจกต์ด้วย Object.assign หรือ destructuring
 
@@ -656,7 +656,7 @@ createMenu({ body: "Bar" });
 เพื่อหลีกเลี่ยงการเกิด side effects และ unexpected behavior โดยการผ่านค่าให้ชัดเจนไปเลย เช่น `undefined` หรือ `null` คุณสามารถบอก TypeScript compiler ให้ปิดมัน
 โดยดูการตั้งค่า TypeScript ที่ [`--strictNullChecks`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#--strictnullchecks)
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### อย่าใช้ flags เป็นพารามิเตอร์ของฟังก์ชัน
 
@@ -686,7 +686,7 @@ function createFile(name: string) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid Side Effects (part 1)
 
@@ -728,7 +728,7 @@ const encodedName = toBase64(name);
 console.log(name);
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid Side Effects (part 2)
 
@@ -760,7 +760,7 @@ function addItemToCart(cart: CartItem[], item: Item): CartItem[] {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't write to global functions
 
@@ -794,7 +794,7 @@ class MyArray<T> extends Array<T> {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Favor functional programming over imperative programming
 
@@ -857,7 +857,7 @@ const totalOutput = contributions.reduce(
 );
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Encapsulate conditionals
 
@@ -881,7 +881,7 @@ if (canActivateService(subscription, account)) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid negative conditionals
 
@@ -909,7 +909,7 @@ if (!isEmailUsed(node)) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid conditionals
 
@@ -974,7 +974,7 @@ class Cessna extends Airplane {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid type checking
 
@@ -1004,7 +1004,7 @@ function travelToTexas(vehicle: Vehicle) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't over-optimize
 
@@ -1028,7 +1028,7 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Remove dead code
 
@@ -1061,7 +1061,7 @@ const req = requestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Use iterators and generators
 
@@ -1144,7 +1144,7 @@ itiriri(fibonacci())
   .forEach((fib) => console.log(fib));
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Objects and Data Structures
 
@@ -1210,7 +1210,7 @@ const account = new BankAccount();
 account.balance = 100;
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Make objects have private/protected members
 
@@ -1252,7 +1252,7 @@ class Circle {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Prefer immutability
 
@@ -1350,7 +1350,7 @@ const result = readonlyData(100);
 result.value = 200; // error
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### type vs. interface
 
@@ -1407,7 +1407,7 @@ class Square implements Shape {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Classes
 
@@ -1484,7 +1484,7 @@ class Dashboard {
 // ...
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### High cohesion and low coupling
 
@@ -1562,7 +1562,7 @@ class UserNotifier {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Prefer composition over inheritance
 
@@ -1623,7 +1623,7 @@ class EmployeeTaxData {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Use method chaining
 
@@ -1705,7 +1705,7 @@ const query = new QueryBuilder()
   .build();
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## SOLID
 
@@ -1757,7 +1757,7 @@ class UserSettings {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Open/Closed Principle (OCP)
 
@@ -1848,7 +1848,7 @@ class HttpRequester {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Liskov Substitution Principle (LSP)
 
@@ -1956,7 +1956,7 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Interface Segregation Principle (ISP)
 
@@ -2037,7 +2037,7 @@ class EconomicPrinter implements Printer {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Dependency Inversion Principle (DIP)
 
@@ -2134,7 +2134,7 @@ const reader = new ReportReader(new JsonFormatter());
 await report = await reader.read('report.json');
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Testing
 
@@ -2152,7 +2152,7 @@ There's no excuse to not write tests. There are [plenty of good JS test framewor
 
 3. You are not allowed to write any more production code than is sufficient to pass the one failing unit test.
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### F.I.R.S.T. rules
 
@@ -2168,7 +2168,7 @@ Clean tests should follow the rules:
 
 - **Timely** unit tests should be written before the production code. If you write tests after the production code, you might find writing tests too hard.
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Single concept per test
 
@@ -2218,7 +2218,7 @@ describe("AwesomeDate", () => {
 });
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### The name of the test should reveal its intention
 
@@ -2252,7 +2252,7 @@ describe("Calendar", () => {
 });
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Concurrency
 
@@ -2333,7 +2333,7 @@ Promises supports a few helper methods that help make code more concise:
 
 `Promise.all` is especially useful when there is a need to run tasks in parallel. `Promise.race` makes it easier to implement things like timeouts for promises.
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Async/Await are even cleaner than Promises
 
@@ -2387,7 +2387,7 @@ try {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Error Handling
 
@@ -2454,7 +2454,7 @@ function calculateTotal(items: Item[]): Failable<number, "empty"> {
 
 For the detailed explanation of this idea refer to the [original post](https://medium.com/@dhruvrajvanshi/making-exceptions-type-safe-in-typescript-c4d200ee78e9).
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't ignore caught errors
 
@@ -2490,7 +2490,7 @@ try {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't ignore rejected promises
 
@@ -2531,7 +2531,7 @@ try {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Formatting
 
@@ -2602,7 +2602,7 @@ type Container = {
 Prefer using `PascalCase` for class, interface, type and namespace names.  
 Prefer using `camelCase` for variables, functions and class members.
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Function callers and callees should be close
 
@@ -2689,7 +2689,7 @@ const review = new PerformanceReview(employee);
 review.review();
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Organize imports
 
@@ -2735,7 +2735,7 @@ import { ApiCredentials, Adapters } from "./common/api/authorization";
 import { ConfigPlugin } from "./plugins/config/configPlugin";
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Use typescript aliases
 
@@ -2769,7 +2769,7 @@ import { UserService } from "@services/UserService";
 ...
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Comments
 
@@ -2799,7 +2799,7 @@ if (isSubscriptionActive) {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't leave commented out code in your codebase
 
@@ -2825,7 +2825,7 @@ type User = {
 };
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Don't have journal comments
 
@@ -2853,7 +2853,7 @@ function combine(a: number, b: number): number {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### Avoid positional markers
 
@@ -2915,7 +2915,7 @@ class Client {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ### TODO comments
 
@@ -2943,7 +2943,7 @@ function getActiveSubscriptions(): Promise<Subscription[]> {
 }
 ```
 
-**[⬆ กลับสู่ด้านบน](#table-of-contents)**
+**[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
 ## Translations
 
