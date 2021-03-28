@@ -5,10 +5,10 @@
 
 ## สารบัญ
 
-1. [บทนำ](#introduction)
-2. [ตัวแปร](#variables)
-3. [ฟังก์ชัน](#functions)
-4. [Objects and Data Structures](#objects-and-data-structures)
+1. [บทนำ](#บทนำ)
+2. [ตัวแปร](#ตัวแปร)
+3. [ฟังก์ชัน](#ฟังก์ชัน)
+4. [อ็อบเจกต์และโครงสร้างข้อมูล](#อ็อบเจกต์และโครงสร้างข้อมูล)
 5. [Classes](#classes)
 6. [SOLID](#solid)
 7. [Testing](#testing)
@@ -1146,7 +1146,7 @@ itiriri(fibonacci())
 
 **[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
-## Objects and Data Structures
+## อ็อบเจกต์และโครงสร้างข้อมูล
 
 ### Use getters and setters
 
