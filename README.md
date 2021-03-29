@@ -688,16 +688,13 @@ function createFile(name: string) {
 
 **[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
-### Avoid Side Effects (part 1)
+### หลีกเลี่ยง Side Effects (ตอนที่ 1)
 
-A function produces a side effect if it does anything other than take a value in and return another value or values.
-A side effect could be writing to a file, modifying some global variable, or accidentally wiring all your money to a stranger.
+ฟังก์ชันอาจจะทำให้เกิด side effect ได้ ถ้าหากมีการทำอย่างอื่นมากกว่ารับค่าส่งค่า ซึ่ง side effect จะเกิดขึ้นตอนที่มีการเขียนไฟล์เดียวกัน, เปลี่ยนค่าในตัวแปรที่เป็น global หรือการเผลอจ่ายเงินทั้งหมดไปให้คนแปลกหน้า
 
-Now, you do need to have side effects in a program on occasion. Like the previous example, you might need to write to a file.
-What you want to do is to centralize where you are doing this. Don't have several functions and classes that write to a particular file.
-Have one service that does it. One and only one.
+ตอนนี้คุณอาจจะมีส่วนที่ทำให้เกิด side effect อยู่บ้างในโปรแกรมของคุณ เช่นเดียวกับตัวอย่างก่อนหน้านี้ คุณอาจจะเขียนไฟล์เดียวกันอยู่ สิ่งที่คุณควรทำคือการหาตัวกลางมาทำแทน อย่าให้มีหลายฟังก์ชันหรือคลาสเขียนข้อมูลลงไฟล์เดียวกัน ให้มีแค่ service เดียวเท่านั้นที่บันเขียนไฟล์นั้นได้ ขอย้ำอีกครั้งว่า แค่ service เดียวเท่านั้น
 
-The main point is to avoid common pitfalls like sharing state between objects without any structure, using mutable data types that can be written to by anything, and not centralizing where your side effects occur. If you can do this, you will be happier than the vast majority of other programmers.
+อีกประเด็นสำคัญคือการพยายามหลีกเลี่ยง side effect ทั่วไป เช่นการใช้ state ร่ามกันระหว่าง object โดยไม่มีโครงสร้างใด ๆ ด้วยการใช้ชนิดข้อมูลที่สามารถเปลี่ยนแปลงได้ ซึ่งสามารถเขียนด้วยอะไรก็ได้ และจะไม่เป็นตัวกลางที่จะทำให้ side effect เกิดขึ้น ถ้าคุณสามารถทำได้เช่นนี้แล้ว คุณก็จะมีควารสุขขึ้นมากกว่าโปรแกรมเมอร์คนอื่น ๆ ส่วนใหญ่แน่นอน
 
 **ไม่ดี:**
 
@@ -730,19 +727,19 @@ console.log(name);
 
 **[⬆ กลับสู่ด้านบน](#สารบัญ)**
 
-### Avoid Side Effects (part 2)
+### หลีกเลี่ยง Side Effects (ตอนที่ 2)
 
-In JavaScript, primitives are passed by value and objects/arrays are passed by reference. In the case of objects and arrays, if your function makes a change in a shopping cart array, for example, by adding an item to purchase, then any other function that uses that `cart` array will be affected by this addition. That may be great, however, it can be bad too. Let's imagine a bad situation:
+ใน JavaScript ยุคแรก ๆ มีการผ่านค่า value และ objects/arrays ด้วยการอ้างอิง ในกรณีที่เป็น objects และ arrays ถ้าฟังก์ชันของคุณเป็นฟังก์ชันที่ทำการเปลี่ยนข้อมูล array ในตะกร้าสินค้า ตัวอย่างเช่น ฟังก์ชันการเพิ่มสินค้าที่จะซื้อ แต่มีฟังก์ชั่นอื่น ๆ ก็กำลังใช้อาเรย์ `cart` นั้นอยู่ด้วย จะทำให้มีผลกระทบกับการเพิ่มสินค้าได้ ซึ่งนั่นก็อาจจะดีนะ แต่มันก็แย่เหมือนกัน ลองคิดดูว่าถ้ามีเหตุการณ์แย่ ๆ ประมาณนี้:
 
-The user clicks the "Purchase", a button which calls a `purchase` function that spawns a network request and sends the `cart` array to the server. Because of a bad network connection, the purchase function has to keep retrying the request. Now, what if in the meantime the user accidentally clicks "Add to Cart" button on an item they don't actually want before the network request begins? If that happens and the network request begins, then that purchase function will send the accidentally added item because it has a reference to a shopping cart array that the `addItemToCart` function modified by adding an unwanted item.
+ผู้ใช้กดปุ่ม "สั่งซื้อ" ซึ่งปุ่มนี้มันเรียกฟังก์ชัน `purchase` ที่จะสร้าง network request และส่งอาเรย์ `cart` ไปยังเซิร์ฟเวอร์ด้วย แต่เนื่องจากสัญญาณเครือข่ายไม่ดีทำให้ฟังก์ชัน purchase มีการลองส่งข้อมูลไปอีกครั้ง แล้วจะเกิดอะไรขึ้นถ้าระหว่างนี้ผู้ใช้เผลอกดปุ่ม "เพิ่มลงตะกร้า" กับสินค้าที่ไม่ได้ตั้งใจจะซื้อจริง ๆ ก่อนที่ network request จะเริ่มขึ้น? ถ้าหากเป็นแบบนี้จะทำให้ network request เริ่มส่งข้อมูลใหม่แล้วทำให้ฟังก์ชัน purchase จะส่งข้อมูลสินค้าที่เผลอกดไปด้วย เพราะว่ามันอ้างอิงข้อมูลจากอาเรย์ cart ที่ฟังก์ชัน `addItemToCart` แก้ไขข้อมูลสินค้าในตะกร้าโดยเพิ่มสินค้าที่ไม่ต้องการลงไปด้วย
 
-A great solution would be for the `addItemToCart` to always clone the `cart`, edit it, and return the clone. This ensures that no other functions that are holding onto a reference to the shopping cart will be affected by any changes.
+ทางออกที่ดีคือให้ฟังก์ชัน `addItemToCart` ทำการโคลนอาเรย์ `cart` แก้ไข และคืนค่าที่โคลนไว้ออกไป วิธีนี้จะทำให้มั่นใจได้ว่าจะไม่มีผลกระทบการเปลี่ยนแปลงข้อมูลตะกร้าสินค้าของฟังก์ชันอื่นที่อ้างอิงข้อมูลตะกร้าสินค้าเดียวกันนี้
 
-Two caveats to mention to this approach:
+มีสองข้อแม้เกียวกับแนวทางนี้คือ:
 
-1. There might be cases where you actually want to modify the input object, but when you adopt this programming practice you will find that those cases are pretty rare. Most things can be refactored to have no side effects! (see [pure function](https://en.wikipedia.org/wiki/Pure_function))
+1. อาจมีบางกรณีที่คุณต้องการแก้ไข input object จริง ๆ  แต่เมื่อคุณทำตามแนวทางการเขียนโปรแกรมนี้ คุณจะพบว่ามันจะเกิดขึ้นได้ยากมาก และส่วนใหญ่จะสามารถปรับให้มันไม่มี side effects เกิดขึ้นได้! (ดูเพิ่มเรื่อง [pure function](https://en.wikipedia.org/wiki/Pure_function))
 
-2. Cloning big objects can be very expensive in terms of performance. Luckily, this isn't a big issue in practice because there are great libraries that allow this kind of programming approach to be fast and not as memory intensive as it would be for you to manually clone objects and arrays.
+2. การโคลน object ขนาดใหญ่อาจทำให้เสีย performance ไปมาก แต่โดยดีที่อาจจะไม่ใช่ปัญหาใหญ่ในทางปฏิบัติ เพราะเรามีสุดยอด library ที่ช่วยให้วิธีการเขียนโปรแกรมวิธีนี้ทำได้รวดเร็วและไม่ต้องใช้หน่วยความจำมากเท่ากับการโคลน objects และ arrays ด้วยตนเอง
 
 **ไม่ดี:**
 
