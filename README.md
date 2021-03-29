@@ -1148,17 +1148,16 @@ itiriri(fibonacci())
 
 ## อ็อบเจกต์และโครงสร้างข้อมูล
 
-### Use getters and setters
+### ใช้ getters และ setters
 
-TypeScript supports getter/setter syntax.
-Using getters and setters to access data from objects that encapsulate behavior could be better than simply looking for a property on an object.
-"Why?" you might ask. Well, here's a list of reasons:
+TypeScript รองรับการใช้งาน getter/setter syntax.
+การใช้ getters และ setters เพื่อเข้าถึงข้อมูลในอ็อบเจกต์ จะทำให้ได้ใช้ behavior ซึ่งจะมีกว่าการแค่มองหา property ใน object เพียงอย่างเดียว คุณอาจถามว่า "แล้วมันดียังไงหรอ" นี่คือเหตุผลครับ:
 
-- When you want to do more beyond getting an object property, you don't have to look up and change every accessor in your codebase.
-- Makes adding validation simple when doing a `set`.
-- Encapsulates the internal representation.
-- Easy to add logging and error handling when getting and setting.
-- You can lazy load your object's properties, let's say getting it from a server.
+- เมื่อคุณต้องการทำมากกว่าแค่ดึงค่า property ใน object คุณไม่จำเป็นต้องคอยไล่หาและเปลี่ยนทุกตัวเข้าถึงใน codebase ของคุณ
+- การเขียน validation เพิ่มเข้าไปได้ง่ายขึ้นด้วยการใช้ `set`
+- มีการห่อหุ้มพวก representation ภายในด้วย
+- การเก็บ log และจัดการ error ที่เกิดขึ้นตอน getting และ setting ทำได้ง่าย
+- คุณสามารถทำ lazy load ให้กับ properties ใน object ได้ด้วย โดยสมมติว่ามีการ getting ข้อมูลมาจากเซิร์ฟเวอร์
 
 **ไม่ดี:**
 
